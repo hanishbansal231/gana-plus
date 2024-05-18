@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan"
 import dotenv from "dotenv";
 import errorMiddleware from "./middlewares/error.middleware.js";
+import artistRoutes from "./routes/artist.route.js"
 const app = express();
 
 //configure env
@@ -31,6 +32,8 @@ app.get('/', (req, res) => {
         message: `WELCOME Gana App...`
     });
 });
+
+app.use("/api/v1/artist", artistRoutes);
 
 
 app.all('*', (req, res) => {
