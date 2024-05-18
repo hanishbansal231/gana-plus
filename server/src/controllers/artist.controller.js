@@ -20,4 +20,33 @@ export const createArtist = async (req, res, next) => {
     } catch (error) {
         return next(new ApiError(501, "failed to create artist"))
     }
+};
+
+export const getAllArtists = async (req, res, next) => {
+    try {
+        const artists = await Artist.find();
+        res.status(201).json(
+            new ApiResponse(200, artists, "Artists fetched successfully")
+        )
+    } catch (error) {
+        return next(new ApiError(501, "failed to get all artists"));
+    }
+};
+
+//get by id;
+
+export const getArtistById = async (req, res, next) => {
+    const { aid } = req.params;
+    console.log(aid)
+    if (!aid) {
+        return next(new ApiError(402), "Invalid artist id")
+    }
+    try {
+        const artist = await Artist.findById(aid);
+        res.status(201).json(
+            new ApiResponse(200, artist, "Artist fetched successfully")
+        )
+    } catch (error) {
+        return next(new ApiError(501, "failed to get artists"));
+    }
 }

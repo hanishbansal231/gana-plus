@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { createArtist } from '../controllers/artist.controller.js';
+import { createArtist, getAllArtists, getArtistById } from '../controllers/artist.controller.js';
 
 const router = Router();
 
 router.post("/", createArtist);
+router.get("/", getAllArtists);
+router.get("/:aid", getArtistById);
 
 export default router;
