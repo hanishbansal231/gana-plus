@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import morgan from "morgan"
 import dotenv from "dotenv";
+import errorMiddleware from "./middlewares/error.middleware.js";
 const app = express();
 
 //configure env
@@ -22,6 +23,8 @@ app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 app.use(express.static("public"));
 app.use(cookieParser());
 app.use(morgan("dev"));
+
+app.use(errorMiddleware);
 
 app.get('/', (req, res) => {
     return res.status(200).json({
