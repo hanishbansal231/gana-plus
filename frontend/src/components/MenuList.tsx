@@ -51,7 +51,7 @@ function MenuList() {
             id: 8,
             label: 'Haryani Song',
             icon: MdOutlineHome,
-            link: '/'
+            link: '/haryani'
         },
     ];
 
