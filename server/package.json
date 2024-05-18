@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.2.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -20,6 +20,10 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.0",
     "morgan": "^1.10.0",
+<<<<<<< HEAD
     "nodemailer": "^6.9.13"
+=======
+    "nodemon": "^3.1.0"
+>>>>>>> 166e28f4095f2f041f13fc02aeea0d019a55abab
   }
 }
