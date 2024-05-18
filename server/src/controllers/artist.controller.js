@@ -47,6 +47,29 @@ export const getArtistById = async (req, res, next) => {
             new ApiResponse(200, artist, "Artist fetched successfully")
         )
     } catch (error) {
-        return next(new ApiError(501, "failed to get artists"));
+        return next(new ApiError(501, "failed to get artist"));
+    }
+};
+
+export const updateArtist = async (req, res, next) => {
+    try {
+        const { name, bio, genres } = req.body;
+        console.log(name, bio, genres)
+        const { aid } = req.params;
+        if (!aid) {
+            return next(new ApiError(402), "Invalid artist id")
+        }
+        const artist = await Artist.findById(aid);
+        const updatedArtist = await Artist.findByIdAndUpdate(aid, {
+            name: name || artist.name,
+            bio: bio || artist.bio,
+            genres: genres || artist.genres,
+        }, { new: true });
+        console.log(updatedArtist)
+        res.status(201).json(
+            new ApiResponse(200, updatedArtist, "Artist updated successfully")
+        )
+    } catch (error) {
+        return next(new ApiError(501, "failed to update artist"));
     }
 }
