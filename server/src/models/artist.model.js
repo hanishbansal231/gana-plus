@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import { Schema, model } from 'mongoose';
 
 const artistSchema = new Schema({
     name: {
@@ -18,6 +17,6 @@ const artistSchema = new Schema({
     }],
 }, { timestamps: true });
 
-const Artist = mongoose.model('Artist', artistSchema);
+const Artist = model('Artist', artistSchema);
 
 module.exports = Artist;

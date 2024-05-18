@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const { Schema } = mongoose;
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt';
+import { config } from 'dotenv';
+config();
 
 const userSchema = new Schema({
     username: {
@@ -61,6 +62,6 @@ userSchema.methods.generateAuthToken = function () {
     return token;
 };
 
-const User = mongoose.model('User', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
