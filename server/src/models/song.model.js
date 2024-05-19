@@ -24,6 +24,14 @@ const songSchema = new Schema({
         ref: 'Artist',
         required: true,
     },
+    audio: {
+        url: {
+            type: String
+        },
+        public_id: {
+            type: String
+        }
+    },
     likes: {
         type: Number,
         default: 0,
