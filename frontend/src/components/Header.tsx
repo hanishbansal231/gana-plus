@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ handleSideBar, isSideBarOpen }) => {
     const navigate = useNavigate();
     // <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>open modal</button>
     function handleSignUpModel(): void {
-        document.getElementById('my_modal_3').showModal()
+        // document.getElementById('my_modal_3').showModal()
     }
     return (
         <div className='bg-black h-[60px] shadow-sm'>

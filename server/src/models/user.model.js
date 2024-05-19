@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt'
 import { config } from 'dotenv';
 config();
 
@@ -53,7 +53,10 @@ const userSchema = new Schema({
         sparse: true,
     },
     token: String,
-    resetPasswordExpires: Date.now(),
+    resetPasswordExpires: {
+        type: Date,
+        default: Date.now
+    },
 }, { timestamps: true });
 
 // Password hashing middleware
