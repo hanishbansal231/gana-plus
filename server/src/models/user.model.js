@@ -64,4 +64,4 @@ userSchema.methods.generateAuthToken = function () {
 
 const User = model('User', userSchema);
 
-module.exports = User;
+export default User;
