@@ -1,6 +1,6 @@
 import Artist from "../models/artist.model.js";
 import ApiResponse from "../utils/ApiResponse.js";
-import ApiError from "../utils/apiError.js"
+import ApiError from "../utils/ApiError.js"
 export const createArtist = async (req, res, next) => {
     try {
         // console.log(req.body)

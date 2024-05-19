@@ -4,6 +4,10 @@ import { config } from 'dotenv';
 config();
 
 const userSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     username: {
         type: String,
         required: true,
@@ -22,11 +26,20 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
+        required:true,
     },
     googleId: {
         type: String,
         unique: true,
         sparse: true,
+    },
+    avatar_image: {
+        url: {
+            type: String
+        },
+        public_id: {
+            type: String
+        }
     },
     facebookId: {
         type: String,
