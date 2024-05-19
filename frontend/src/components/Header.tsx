@@ -1,5 +1,6 @@
 import React from 'react';
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
+import SignUpModel from './SignUpModel';
 
 interface HeaderProps {
     handleSideBar: () => void;
@@ -7,6 +8,11 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ handleSideBar, isSideBarOpen }) => {
+
+    // <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>open modal</button>
+    function handleSignUpModel(): void {
+        document.getElementById('my_modal_3').showModal()
+    }
     return (
         <div className='bg-black h-[60px] shadow-sm'>
             <div className='flex justify-between items-center h-full px-6'>
@@ -25,9 +31,10 @@ const Header: React.FC<HeaderProps> = ({ handleSideBar, isSideBarOpen }) => {
                 </div>
                 <div className='flex gap-6'>
                     <button className='border text-white py-2 px-6 font-semibold text-lg rounded-3xl'>Login</button>
-                    <button className='bg-white py-2 px-6 font-semibold text-lg rounded-3xl'>SignUp</button>
+                    <button onClick={handleSignUpModel} className='bg-white py-2 px-6 font-semibold text-lg rounded-3xl'>SignUp</button>
                 </div>
             </div>
+            <SignUpModel />
         </div>
     );
 };

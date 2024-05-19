@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import { MdOutlineHome } from 'react-icons/md';
@@ -54,10 +54,10 @@ function MenuList() {
             link: '/haryani'
         },
     ];
-
+    const [activeId, setActiveId] = useState<number>(1)
     return (
         <ul className=' flex flex-col gap-4'>
-            {menuData.map((item, i) => <MenuItem key={i} label={item.label} icon={item.icon} link={item.link} />)}
+            {menuData.map((item, i) => <MenuItem key={i} label={item.label} icon={item.icon} link={item.link} id={item.id} activeId={activeId} setActiveId={setActiveId} />)}
         </ul>
     );
 }

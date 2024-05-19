@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import SideBar from './SideBar';
 import Header from './Header';
 
-function Layout() {
+interface LayoutProps {
+    children: ReactNode;
+}
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(true);
 
     function handleSideBar() {
@@ -15,7 +18,9 @@ function Layout() {
             <div className='flex flex-col flex-1 overflow-hidden'>
                 <Header handleSideBar={handleSideBar} isSideBarOpen={isSideBarOpen} />
                 <div className='flex-1 p-4 min-h-0 overflow-auto'>
-                    <h1>Hello</h1>
+                    <main>
+                        {children}
+                    </main>
                 </div>
             </div>
         </div>
