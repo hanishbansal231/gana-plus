@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import sendEmail from '../utils/sendEmail';
+import sendEmail from '../utils/sendEmail.js';
 
 const OTPSchema = new Schema({
     email: {
