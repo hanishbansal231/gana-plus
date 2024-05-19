@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import { MdOutlineHome } from 'react-icons/md';
 

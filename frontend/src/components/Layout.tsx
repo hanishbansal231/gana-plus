@@ -1,10 +1,8 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import SideBar from './SideBar';
 import Header from './Header';
+import { LayoutProps } from '../interface/interface';
 
-interface LayoutProps {
-    children: ReactNode;
-}
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(true);
 

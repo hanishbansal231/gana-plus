@@ -1,11 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-
-interface SignUpData {
-    name: string;
-    userName: string;
-    email: string;
-    password: string;
-}
+import { SignUpData } from '../interface/interface';
 
 const SignUpPage: React.FC = () => {
     const [signUpData, setSignUpData] = useState<SignUpData>({

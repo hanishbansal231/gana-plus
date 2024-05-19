@@ -1,17 +1,13 @@
 import React from 'react';
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
 import SignUpModel from './SignUpModel';
-
-interface HeaderProps {
-    handleSideBar: () => void;
-    isSideBarOpen: boolean;
-}
+import { HeaderProps } from '../interface/interface';
 
 const Header: React.FC<HeaderProps> = ({ handleSideBar, isSideBarOpen }) => {
 
     // <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>open modal</button>
     function handleSignUpModel(): void {
-        document.getElementById('my_modal_3').showModal()
+        // document.getElementById('my_modal_3').showModal()
     }
     return (
         <div className='bg-black h-[60px] shadow-sm'>

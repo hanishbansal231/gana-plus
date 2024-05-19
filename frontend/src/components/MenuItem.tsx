@@ -1,16 +1,9 @@
-import React, { ReactElement, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { MenuItemProps } from '../interface/interface';
 
-interface MenuItemProps {
-    label: string;
-    icon: React.ElementType;
-    link: string;
-    id: number;
-    activeId: number,
-    setActiveId: (id: number) => void
-}
 
-function MenuItem({ label, icon: Icon, link, id, activeId, setActiveId }: MenuItemProps): ReactElement {
+function MenuItem({ label, icon: Icon, link, id, activeId, setActiveId }: MenuItemProps): React.ReactElement {
     function handleActiveNavItem(id: number): void {
         setActiveId(id);
     }
