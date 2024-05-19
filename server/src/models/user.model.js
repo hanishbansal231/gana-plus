@@ -6,16 +6,16 @@ config();
 const userSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: [true, 'Name is required']
     },
     username: {
         type: String,
-        required: true,
+        required: [true, 'Usesname is required'],
         unique: true,
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'Email is required'],
         unique: true,
         validate: {
             validator: function (v) {
@@ -26,7 +26,13 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required:true,
+        required: [true, 'Password is required'],
+        validate: {
+            validator: function (v) {
+                return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(v);
+            },
+            message: props => `${props.value} is not a valid password!`
+        },
     },
     googleId: {
         type: String,
@@ -46,7 +52,8 @@ const userSchema = new Schema({
         unique: true,
         sparse: true,
     },
-    tokens: [String],
+    token: String,
+    resetPasswordExpires: Date.now(),
 }, { timestamps: true });
 
 // Password hashing middleware
