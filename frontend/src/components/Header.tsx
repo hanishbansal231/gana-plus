@@ -1,6 +1,7 @@
 import React from 'react';
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
 import SignUpModel from './SignUpModel';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
     handleSideBar: () => void;
@@ -8,7 +9,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ handleSideBar, isSideBarOpen }) => {
-
+    const navigate = useNavigate();
     // <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>open modal</button>
     function handleSignUpModel(): void {
         document.getElementById('my_modal_3').showModal()
@@ -31,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ handleSideBar, isSideBarOpen }) => {
                 </div>
                 <div className='flex gap-6'>
                     <button className='border text-white py-2 px-6 font-semibold text-lg rounded-3xl'>Login</button>
-                    <button onClick={handleSignUpModel} className='bg-white py-2 px-6 font-semibold text-lg rounded-3xl'>SignUp</button>
+                    <button onClick={() => navigate("/signup")} className='bg-white py-2 px-6 font-semibold text-lg rounded-3xl'>SignUp</button>
                 </div>
             </div>
             <SignUpModel />
