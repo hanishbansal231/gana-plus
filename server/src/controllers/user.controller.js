@@ -1,11 +1,11 @@
 
-import authModel from "../models/authModel.js";
+import User from '../models/user.model.js'
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import uploadCloudinary from "../utils/cloudinary.js";
 import otpGenerator from 'otp-generator';
-import OTP from "../models/otpModel.js";
+import OTP from "../models/otp.model.js";
 import JWT from 'jsonwebtoken';
 import validateEmail from "../utils/emailVerify.js";
 import sendEmail from "../utils/sendEmail.js";
@@ -19,7 +19,7 @@ export const sendOTP = asyncHandler(async (req, res, next) => {
             next(new ApiError(403, 'Email is required'));
         }
 
-        const existUser = await authModel.findOne({ email });
+        const existUser = await User.findOne({ email });
 
         if (existUser) {
             next(new ApiError(403, 'User is already exist,Please try to login'));
@@ -63,7 +63,7 @@ export const register = asyncHandler(async (req, res, next) => {
             return next(new ApiError(400, "All Fields are required"));
         }
 
-        const userExists = await authModel.findOne({
+        const userExists = await User.findOne({
             $or: [{ username, email }]
         });
 
@@ -80,7 +80,7 @@ export const register = asyncHandler(async (req, res, next) => {
             return next(new ApiError(400, 'The OTP is not valid'));
         }
 
-        const user = await authModel.create({
+        const user = await User.create({
             name,
             email,
             username,
@@ -121,7 +121,7 @@ export const register = asyncHandler(async (req, res, next) => {
     }
 })
 
-export const login = async (req, res, next) => {
+export const login = asyncHandler(async (req, res, next) => {
     try {
         const { email, password, username } = req.body;
 
@@ -130,8 +130,8 @@ export const login = async (req, res, next) => {
         }
 
         let user;
-        if (validateEmail(email)) user = await authModel.findOne({ email });
-        else user = await authModel.findOne({ username });
+        if (validateEmail(email)) user = await User.findOne({ email });
+        else user = await User.findOne({ username });
 
         if (!user) {
             return next(new ApiError(404, "Email is not registered"));
@@ -162,9 +162,9 @@ export const login = async (req, res, next) => {
     } catch (error) {
         next(new ApiError(500, error.message));
     }
-}
+})
 
-export const logout = async (req, res, next) => {
+export const logout = asyncHandler(async (req, res, next) => {
     try {
         res.cookie("token", null, {
             secure: true,
@@ -179,13 +179,13 @@ export const logout = async (req, res, next) => {
     } catch (error) {
         next(new ApiError(500, error.message));
     }
-}
+})
 
 
-export const resetPasswordToken = async (req, res) => {
+export const resetPasswordToken = asyncHandler(async (req, res) => {
     try {
         const email = req.body.email;
-        const user = await authModel.findOne({ email: email });
+        const user = await User.findOne({ email: email });
         if (!user) {
             return res.json({
                 success: false,
@@ -194,7 +194,7 @@ export const resetPasswordToken = async (req, res) => {
         }
         const token = crypto.randomBytes(20).toString("hex");
 
-        const updatedDetails = await authModel.findOneAndUpdate(
+        const updatedDetails = await User.findOneAndUpdate(
             { email: email },
             {
                 token: token,
@@ -224,9 +224,9 @@ export const resetPasswordToken = async (req, res) => {
             message: `Some Error in Sending the Reset Message`,
         });
     }
-};
+})
 
-export const resetPassword = async (req, res) => {
+export const resetPassword = asyncHandler(async (req, res) => {
     try {
         const { password, confirmPassword, token } = req.body;
 
@@ -266,13 +266,13 @@ export const resetPassword = async (req, res) => {
             message: `Some Error in Updating the Password`,
         });
     }
-};
+})
 
-export const updateUser = async (req, res, next) => {
+export const updateUser = asyncHandler(async (req, res, next) => {
     try {
         const { username, name, email } = req.body;
         const { id } = req.params;
-        const user = await authModel.findById(id);
+        const user = await User.findById(id);
 
         user.username = username || user.username;
         user.name = name || user.name;
@@ -303,12 +303,12 @@ export const updateUser = async (req, res, next) => {
     } catch (error) {
         throw new ApiError(500, error.message);
     }
-}
+})
 
-export const getUserProfile = async (req, res, next) => {
+export const getUserProfile = asyncHandler(async (req, res, next) => {
     try {
         const { id } = req.params;
-        const user = await authModel.findById(id);
+        const user = await User.findById(id);
         if (!user) {
             next(new ApiError(400, "Error in getting profile"));
         }
@@ -318,4 +318,17 @@ export const getUserProfile = async (req, res, next) => {
     } catch (error) {
         throw new ApiError(500, error.message);
     }
-}
+})
+
+
+/**
+ * Google Authentication
+ */
+
+// export const googleAuthentication = asyncHandler(async (req, res, next) => {
+//     try {
+
+//     } catch (error) {
+//         throw new ApiError(500, error.message);
+//     }
+// })
