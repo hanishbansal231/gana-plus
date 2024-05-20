@@ -1,10 +1,13 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import TopBanner from '../components/TopBanner'
+import TrendingSongList from '../components/TrendingSongList'
 
 function HomePage() {
     return (
         <Layout>
-            <h1>HomePage</h1>
+            <TopBanner />
+            <TrendingSongList />
         </Layout>
     )
 }
