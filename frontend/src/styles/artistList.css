@@ -1,0 +1,17 @@
+.cards::-webkit-scrollbar {
+    display: none;
+}
+
+.card:hover .controlBnt {
+    visibility: visible;
+
+}
+
+
+/* .cardImgBox{
+    background-color: black;
+} */
+
+.controlBnt {
+    visibility: hidden;
+}

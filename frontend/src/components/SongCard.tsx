@@ -2,10 +2,9 @@ import React from 'react'
 import { FaCirclePlay } from "react-icons/fa6";
 import "../styles/trendingSongList.css";
 
-function TrendingSongCard() {
-    const content = "Dekhha Tenu (From Mr. And Mrs. Mahi)"
+function SongCard() {
     return (
-        <div className='min-w-[200px] card'>
+        <div className='min-w-[200px] cursor-pointer card'>
             <div className=' relative cardImgBox'>
                 <img src="https://c.saavncdn.com/395/Dekhha-Tenu-From-Mr-And-Mrs-Mahi-Hindi-2024-20240514202401-500x500.jpg" alt="" />
                 <button className=' text-4xl text-white absolute z-50 top-1/2 left-[40%] controlBnt'><FaCirclePlay /></button>
@@ -16,4 +15,4 @@ function TrendingSongCard() {
     )
 }
 
-export default TrendingSongCard
+export default SongCard;

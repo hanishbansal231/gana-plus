@@ -27,3 +27,10 @@ export interface MenuItemProps {
     activeId: number,
     setActiveId: (id: number) => void
 }
+
+export interface SongListProps {
+    title: string
+}
+
+export interface ArtistListProps {
+}
