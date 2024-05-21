@@ -10,19 +10,19 @@ const songSchema = new Schema({
         required: true,
     },
     releaseDate: {
-        type: Date,
+        type: String,
         required: true,
     },
     genre: [String],
     album: {
         type: Schema.Types.ObjectId,
         ref: 'Album',
-        required: true,
+        required: false,
     },
     artist: {
         type: Schema.Types.ObjectId,
         ref: 'Artist',
-        required: true,
+        required: false,
     },
     audio: {
         url: {

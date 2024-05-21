@@ -7,6 +7,7 @@ import passport from 'passport';
 import errorMiddleware from "./middlewares/error.middleware.js";
 import artistRoutes from "./routes/artist.route.js";
 import userRoutes from "./routes/user.route.js";
+import songRoutes from "./routes/song.route.js"
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 const app = express();
@@ -29,16 +30,16 @@ app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(passport.initialize());
 
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_URL
-}, function (accessToken, refreshToken, profile, cb) {
-    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-    //     return done(err, user);
-    // });
-    cb(null, profile);
-}));
+// passport.use(new GoogleStrategy({
+//     clientID: process.env.GOOGLE_CLIENT_ID,
+//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL: process.env.GOOGLE_URL
+// }, function (accessToken, refreshToken, profile, cb) {
+//     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//     //     return done(err, user);
+//     // });
+//     cb(null, profile);
+// }));
 
 passport.serializeUser(function (user, cb) {
     cb(null, user);
@@ -63,6 +64,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/v1/artist", artistRoutes);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/song", songRoutes);
 
 app.all('*', (req, res) => {
     return res.status(404).json({
