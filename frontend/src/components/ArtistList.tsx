@@ -1,5 +1,4 @@
 import React from 'react';
-import TrendingSongCard from './SongCard';
 import "../styles/artistList.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { NavLink } from 'react-router-dom';

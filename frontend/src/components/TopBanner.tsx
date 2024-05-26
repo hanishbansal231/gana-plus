@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TopBanner() {
+const TopBanner:React.FC = () => {
     return (
         <div className=' flex justify-center items-center'>
             <div className='flex gap-5 w-full'>

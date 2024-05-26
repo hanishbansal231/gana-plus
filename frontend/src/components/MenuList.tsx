@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MenuItem from './MenuItem';
 import { MdOutlineHome } from 'react-icons/md';
 
-function MenuList() {
+const MenuList: React.FC = () => {
     const menuData = [
         {
             id: 1,

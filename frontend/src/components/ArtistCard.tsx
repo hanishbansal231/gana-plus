@@ -2,7 +2,7 @@ import React from 'react'
 import { FaCirclePlay } from "react-icons/fa6";
 import "../styles/artistList.css";
 
-function ArtistCard() {
+const ArtistCard:React.FC = () => {
     return (
         <div className='min-w-[150px] cursor-pointer card'>
             <div className=' relative'>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SignUpModel() {
+const SignUpModel:React.FC = () => {
     return (
         <dialog id="my_modal_3" className="modal p-0">
             <div className="modal-box flex p-0 rounded-none min-w-[700px]">

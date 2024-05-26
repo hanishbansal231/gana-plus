@@ -2,7 +2,7 @@ import React from 'react'
 import { FaCirclePlay } from "react-icons/fa6";
 import "../styles/trendingSongList.css";
 
-function SongCard() {
+const SongCard: React.FC = () => {
     return (
         <div className='min-w-[200px] cursor-pointer card'>
             <div className=' relative cardImgBox'>
